@@ -72,11 +72,9 @@
             <ComboBox x:Name="model" HorizontalAlignment="Left" Margin="200,-35,0,0" Text=" " VerticalAlignment="Top" Width="136" Height="35"
           ItemsSource="{Binding modelNames}" SelectionChanged="Model_SelectionChanged" />
 
-             
-
         </StackPanel>
         <StackPanel Grid.Row="3" Background="#ECECEC" Margin="0,-100,0,150">
-            <TextBlock Text="Butun elanlar" FontSize="23" Foreground="DarkSlateGray" FontWeight="DemiBold" Margin="50,5,0,0"></TextBlock>
+            <TextBlock Text="Butun elan" FontSize="23" Foreground="DarkSlateGray" FontWeight="DemiBold" Margin="50,5,0,0"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Margin="40,0,40,0" Background="#F5F5F5" Grid.RowSpan="3">
