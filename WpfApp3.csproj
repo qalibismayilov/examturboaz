@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="image\07.jpg" />
+    <None Remove="image\4goz.jpg" />
+    <None Remove="image\60kuza.jpg" />
+    <None Remove="image\camry.jpg" />
+    <None Remove="image\dodge.jpg" />
+    <None Remove="image\download.jpg" />
+    <None Remove="image\piris.jpg" />
+    <None Remove="image\qalikk.jpg" />
+    <None Remove="image\tuareg.jpg" />
+    <None Remove="Red_image\heart.png" />
+    <None Remove="Red_image\RedHeart.png" />
+    <None Remove="Red_image\RedUser.png" />
+    <None Remove="Red_image\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="image\piris.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="image\07.jpg" />
+    <Resource Include="image\4goz.jpg" />
+    <Resource Include="image\60kuza.jpg" />
+    <Resource Include="image\camry.jpg" />
+    <Resource Include="image\dodge.jpg" />
+    <Resource Include="image\download.jpg" />
+    <Resource Include="image\qalikk.jpg" />
+    <Resource Include="image\tuareg.jpg" />
+    <Resource Include="Red_image\heart.png" />
+    <Resource Include="Red_image\RedHeart.png" />
+    <Resource Include="Red_image\RedUser.png" />
+    <Resource Include="Red_image\user.png" />
+  </ItemGroup>
+
+</Project>
