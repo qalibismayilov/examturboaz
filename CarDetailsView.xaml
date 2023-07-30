@@ -10,12 +10,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
- 
-
-
-
-
-
+  
         <StackPanel Grid.Row="0" Margin="-35,0,-35,115" Background="#E1E1E1">
             <Button x:Name="myImageButton" MouseEnter="myImageButton_MouseEnter" MouseLeave="myImageButton_MouseLeave" Width="68" Height="25" Margin="0,6,650,0" Background="Transparent" BorderBrush="Transparent">
                 <StackPanel >

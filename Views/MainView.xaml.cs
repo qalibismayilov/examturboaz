@@ -24,12 +24,17 @@ namespace WpfApp3.Views
         private string selectedModel;
 
         private viewModel viewModel;
+
+        string adUrl = "https://arazmarket.az/";
+        string adUrl1 = "https://arazmarket.az/";
         public MainView()
         {
             InitializeComponent();
 
             viewModel = new viewModel();
             DataContext = viewModel;
+            LoadAd(adUrl);
+            LoadAd(adUrl1);
         }
 
         private void CarImage_Click(object sender, MouseButtonEventArgs e)
@@ -62,7 +67,12 @@ namespace WpfApp3.Views
                 }
             }
         }
-
+        public void SetSelectedPhoto(string carImage)
+        {
+        
+            BitmapImage image = new BitmapImage(new System.Uri(carImage));
+            selectedModelImage.Source = image;
+        }
         private CarInfo GetCarInfoByTag(string carTag)
         {
             CarInfo selectedCar = null;
@@ -72,15 +82,15 @@ namespace WpfApp3.Views
                 case "priora":
                     selectedCar = new CarInfo
                     {
-                       Model = " Lada Priora",
-                       Motor = " mator - 1.6L Benzin",
-                       Year = " il - 2005",
-                       Kilometers = " km - 150000",
-                       Price = " qiymet - 15000",
-                       Color = " reng - white",
-                       about = " haqqinda - oz masinim olub cicey kimi baxmisam\n bos bos yazib narahat elemiyin real aliciya endirim olacaq",
-                       ImageSource = "/image/piris.jpg",
-            };
+                        Model = " Lada Priora",
+                        Motor = " mator - 1.6L Benzin",
+                        Year = " il - 2005",
+                        Kilometers = " km - 150000",
+                        Price = " qiymet - 15000",
+                        Color = " reng - white",
+                        about = " haqqinda - oz masinim olub cicey kimi baxmisam\n bos bos yazib narahat elemiyin real aliciya endirim olacaq",
+                        ImageSource = "/image/piris.jpg",
+                    };
                     break;
 
 
@@ -112,7 +122,7 @@ namespace WpfApp3.Views
                         Color = " reng - Grey",
                         about = " haqqinda - baki qebele ureyin isteyen kimi sur\n hec bir problemi yoxdu",
                         ImageSource = "/Image/4goz.jpg",
-            };
+                    };
                     break;
 
                 case "e60":
@@ -126,21 +136,21 @@ namespace WpfApp3.Views
                         Color = " reng - purple",
                         about = " haqqinda - sport purjun stage 1 yukseldilib \nhec bir problemi yoxdur",
                         ImageSource = "/Image/60kuza.jpg",
-            };
+                    };
                     break;
 
                 case "camry":
                     selectedCar = new CarInfo
                     {
-                         Model = " Toyota camry",
-                         Motor = " motor - 2.5L Benzin",
-                         Year = " il - 2022",
-                         Kilometers = " km - 0",
-                         Price = " qiymet - 35000",
-                         Color = " reng - white",
-                         about = " haqqinda - cox rahat tam dayday masini bez problem",
-                         ImageSource = "/Image/camry.jpg",
-            };
+                        Model = " Toyota camry",
+                        Motor = " motor - 2.5L Benzin",
+                        Year = " il - 2022",
+                        Kilometers = " km - 0",
+                        Price = " qiymet - 35000",
+                        Color = " reng - white",
+                        about = " haqqinda - cox rahat tam dayday masini bez problem",
+                        ImageSource = "/Image/camry.jpg",
+                    };
                     break;
 
 
@@ -156,7 +166,7 @@ namespace WpfApp3.Views
                         Color = " carbon white",
                         about = " haqqinda - problemzisdir axir qiymeti budu",
                         ImageSource = "/Image/07.jpg",
-            };
+                    };
                     break;
 
 
@@ -171,7 +181,7 @@ namespace WpfApp3.Views
                         Price = " qiymet - 350000",
                         Color = " reng - grey",
                         ImageSource = "/image/qalikk.jpg",
-            };
+                    };
                     break;
 
 
@@ -189,7 +199,7 @@ namespace WpfApp3.Views
                         ImageSource = "/image/download.jpg",
                     };
                     break;
- 
+
                 case "challenger":
                     selectedCar = new CarInfo
                     {
@@ -200,7 +210,7 @@ namespace WpfApp3.Views
                         Price = " qiymet - 60000",
                         Color = " reng - dark grey",
                         ImageSource = "/image/dodge.jpg",
-            };
+                    };
                     break;
 
                 default:
@@ -302,7 +312,7 @@ namespace WpfApp3.Views
                     return "/Image/tuareg.jpg";
                 case "priora":
                     return "/Image/piris.jpg";
-                default: 
+                default:
                     return "";
             }
         }
@@ -317,6 +327,8 @@ namespace WpfApp3.Views
             public string? ImageSource { get; internal set; }
             public string? about { get; set; }
         }
+
+
 
         private void myImageButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -406,7 +418,58 @@ namespace WpfApp3.Views
             userImage.Source = new BitmapImage(heartResourceUri);
             selectionTexttu.Foreground = new SolidColorBrush(Colors.SlateGray);
         }
-      
-        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new YeniElan().Show();
+        }
+
+        internal void AddCar(string modelText, string haqqindaText, string qiymetText, string rengText, string kmText, ObservableCollection<string> photos)
+        {
+            if (photos.Count > 0)
+            {
+                BitmapImage image = new BitmapImage(new System.Uri(photos[0]));
+                selectedModelImage.Source = image;
+            }
+        }
+        private void CarListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CarInfo selectedCar = carListBox.SelectedItem as CarInfo;
+            if (selectedCar != null)
+            {
+                CarDetailsView carDetailsView = new CarDetailsView(selectedCar);
+                carDetailsView.ShowDialog();
+            }
+
+            carListBox.SelectedItem = null;
+        }
+
+        internal void AddCar(CarInfo newCar)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        private void LoadAd(string url)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error: " + ex.Message);
+            }
+
+            try
+            {
+                webBrowser1.Navigate(new Uri(url));
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("error: " + ex.Message);
+            }
+        }
     }
 }
